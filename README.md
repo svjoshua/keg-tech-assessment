@@ -92,7 +92,7 @@
      * All other goat facts should be hidden
      * If either or both text inputs are empty, **all** loaded goat facts should be displayed
 
-7. **Dockerfile** - *extra credit*
+7. **Dockerfile**
    * In the `container` folder there is a `Dockerfile`
    * Write a docker file for this application
      * You should be able to run the following commands successfully
@@ -101,7 +101,16 @@
        * `yarn doc:test` - Command should complete without throwing any errors
          * Run this command in a separate terminal tab while the docker container is running
 
-8. **Deploy to the Cloud** - *extra credit*
+8. **Testing Framework**
+   * Choose and implement a unit testing framework for the appplication.
+   * Make sure that running yarn doc:test includes these unit tests.
+
+9. **Update API**
+   * Update the Goat Facts API so that it no longer uses a flat-file data source but instead uses a database.
+   * You may use any database you like.
+   * Import the current contents of the flat file into the database so that the functionality of the API remains unchanged from the front end.
+
+10. **Deploy to the Cloud** - *extra credit*
    * How this is done is not important. It just needs to be accessible via the internet in some way
 
 ## Submit
