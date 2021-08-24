@@ -103,6 +103,7 @@
 8. **Testing Framework**
    * Choose and implement a unit testing framework for the appplication.
    * Make sure that running yarn doc:test includes these unit tests.
+   * For purposes of this assessment, only the backend needs to be tested.
 
 9. **Update API**
    * Update the Goat Facts API so that it no longer uses a flat-file data source but instead uses a database.
