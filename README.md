@@ -1,11 +1,10 @@
 # Tech-Assessment
   * Please complete all tasks outline in the tasks section below
   * There is no time limit
-    * Generally, this assessment should take around 1 to 4 hours to complete.
+    * Generally, this assessment should take around 4 to 8 hours to complete.
     * You will not be graded on how long it takes you to complete it, but please be aware of the time expectation.
     * Estimating the amount of time it takes to complete a task is a common practice within our team
     * **NOTE** - The time estimation does not include installation or tasks marked as **extra-credit**
-  * **Tests are strongly encouraged**
   * Not every change required is outlined in the tasks section
     * We want to see how you think through a problem
     * Some tasks require updating multiple files for that task to be completed
