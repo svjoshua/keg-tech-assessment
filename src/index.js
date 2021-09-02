@@ -4,20 +4,55 @@ import { getGoatFacts } from './getGoatFacts'
 import { addGoatFacts } from './addGoatFacts'
 import { filterGoatFacts } from './filterGoatFacts'
 
+const wordInput = document.querySelector('#goat-facts-filter-text')
+const wordIndexInput = document.querySelector('#goat-facts-filter-index')
+
+// limit input to a single word (no spaces)
+wordInput.addEventListener('keypress', e => {
+  if (e.key === ' ') {
+    e.preventDefault()
+  }
+})
+
+// sanitize input on change event (handles copy/paste)
+wordInput.addEventListener('change', function (e) {
+  this.value = this.value.replaceAll(/\s/g, '')
+})
+
+// limit input index to digits
+wordIndexInput.addEventListener('keypress', e => {
+  if (!/\d/.test(e.key)) {
+    e.preventDefault()
+  }
+})
+
+// clear input if non-integer value is entered (e.g. on paste)
+wordIndexInput.addEventListener('change', function () {
+  if (!/^\d+$/g.test(this.value)) {
+    this.value = ''
+  }
+})
+
 /**
  * onGetGoatFacts - Action to update the goat facts displayed on the Dom
  */
 const onGetGoatFacts = async () => {
-  console.error(`Step 3. Should be called by the Get Goat Facts button!`)
+  const filterWord = wordInput.value;
+  const filterIndexString = wordIndexInput.value;
+  const filterIndex = parseInt(filterIndexString)
 
-  const facts = await getGoatFacts()
+  let facts = await getGoatFacts()
 
-  const filteredFacts = filterGoatFacts(facts)
+  if (
+    filterWord.length &&
+    filterIndexString.length &&
+    Number.isInteger(Number(filterIndex))
+  ) {
+    facts = filterGoatFacts(facts, filterWord, filterIndex)
+  }
 
-  addGoatFacts(filteredFacts)
+  addGoatFacts(facts)
 }
 
-;(async () => {
-  console.error(`Step 2. Open the browser inspector!`)
-  await onGetGoatFacts()
-})()
+const getGoatFactsButton = document.querySelector('#get-goat-facts')
+getGoatFactsButton.addEventListener('click', onGetGoatFacts)
