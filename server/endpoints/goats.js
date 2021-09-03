@@ -4,7 +4,7 @@ const goatService = new GoatService()
 
 const getGoats = (app, config) => async (req, res) => {
   try {
-    let goats = await goatService.goatFacts()
+    const goats = await goatService.goatFacts()
     return apiResponse(req, res, goats, 200)
   }
   catch (err) {
