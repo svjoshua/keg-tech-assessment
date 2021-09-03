@@ -1,2 +1,54 @@
 /* Site CSS */
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 
+body {
+	background-color: #DDE5B6;
+	background-image: linear-gradient(90deg, #F0EAD2 50%, #A98467 50%);
+	background-size: 25px 25px;
+}
+
+main {
+	max-width: 77ch;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+main .card-title {
+	font-family: Rye, 'Times New Roman', Times, serif;
+	margin-bottom: .75em;
+}
+
+input + label {
+	margin-left: 1em;
+}
+
+.filter-index {
+	width: 4em;
+}
+
+.list-group {
+	list-style-position: inside;
+}
+
+main .btn-primary {
+	background-color: #ADC178;
+	border-color: #ADC178;
+	color: #302721;
+}
+
+main .btn-primary:hover,
+main .btn-primary:active,
+main .btn-primary:focus,
+main .btn-primary:active:focus {
+	background-color: #9AB257;
+	border-color: #9AB257;
+	color: #302721;
+	box-shadow: 0 0 0 .25rem #EAEFD2;
+}
+
+main .alert-dark {
+	color: #302721;
+	background-color: #d3d3d4;
+	border-color: #bcbebf;
+}

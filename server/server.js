@@ -3,6 +3,7 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
+const { MongoClient } = require('mongodb')
 const apiEndpoints = require('./endpoints')
 const { api: config } = require('../configs/server.config')
 const { noOpObj, noPropArr, eitherArr } = require('@keg-hub/jsutils')
@@ -52,6 +53,13 @@ const setupServer = (app, config) => {
   app.use(express.static(rootPath))
 }
 
+const setupDb = async (app, config) => {
+  const client = new MongoClient(config.dbUrl)
+  await client.connect() // initialize connetion to mongodb
+  const db = client.db('goats')
+  app.set('db', db) // store db as an app setting for access within libs
+}
+
 /**
  * Starts a express API server
  * Loads the server config for configuring the server properties
@@ -61,9 +69,10 @@ const setupServer = (app, config) => {
 const initApi = async () => {
   const app = express()
 
+  await setupDb(app, config)
   setupServer(app, config)
   setupCors(app, config)
-  apiEndpoints(app, config)
+  await apiEndpoints(app, config)
 
   const server = app.listen(config.port, config.host, () =>
     console.log(new Date() + ` - Listening on ${config.host}:${config.port}`)
