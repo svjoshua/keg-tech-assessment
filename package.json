@@ -8,13 +8,14 @@
   "scripts": {
     "doc:build": "docker build --file ./container/Dockerfile --tag tech:assessment --force-rm .",
     "doc:run": "docker run -it --rm --env-file ./container/.env -p 3000:3000 -p 5005:5005 tech:assessment",
-    "doc:test": "node scripts/docTest.js",
+    "doc:test": "node scripts/docTest.js && yarn test",
     "api": "nodemon --watch ./server --watch ./configs --exec 'node ./server/index.js'",
     "dev": "yarn start",
     "format": "yarn pretty && yarn eslint",
     "eslint": "eslint --config ./configs/eslintrc.config.js . --resolve-plugins-relative-to ./ --fix --quiet",
     "pretty": "./node_modules/.bin/prettier --config ./configs/prettier.config.js --ignore-path .eslintignore --write '**/*.{js,jsx}'",
     "start": "run-p web api",
+    "test": "tap",
     "web": "webpack serve --config configs/webpack.js --progress --content-base src/"
   },
   "devDependencies": {
@@ -56,6 +57,7 @@
     "purgecss-webpack-plugin": "3.1.3",
     "rimraf": "3.0.2",
     "style-loader": "2.0.0",
+    "tap": "15.0.9",
     "terser-webpack-plugin": "5.0.3",
     "webpack": "5.11.1",
     "webpack-cli": "4.5.0",
@@ -66,5 +68,11 @@
     "not ie <= 9",
     "last 2 versions"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "mongodb": "^4.1.1"
+  },
+  "tap" : {
+    "check-coverage": false,
+    "coverage" : false
+  }
 }

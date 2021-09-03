@@ -9,6 +9,7 @@ const wordIndexInput = document.querySelector('#goat-facts-filter-index')
 
 // limit input to a single word (no spaces)
 wordInput.addEventListener('keypress', e => {
+  if (e.key === 'Enter') onGetGoatFacts()
   if (e.key === ' ') {
     e.preventDefault()
   }
@@ -21,6 +22,7 @@ wordInput.addEventListener('change', function (e) {
 
 // limit input index to digits
 wordIndexInput.addEventListener('keypress', e => {
+  if (e.key === 'Enter') onGetGoatFacts()
   if (!/\d/.test(e.key)) {
     e.preventDefault()
   }
@@ -32,6 +34,8 @@ wordIndexInput.addEventListener('change', function () {
     this.value = ''
   }
 })
+
+const alert = document.querySelector('#goat-alert')
 
 /**
  * onGetGoatFacts - Action to update the goat facts displayed on the Dom
@@ -52,6 +56,12 @@ const onGetGoatFacts = async () => {
   }
 
   addGoatFacts(facts)
+
+  if (facts.length) {
+    alert.setAttribute('hidden', '')
+  } else {
+    alert.removeAttribute('hidden')
+  }
 }
 
 const getGoatFactsButton = document.querySelector('#get-goat-facts')

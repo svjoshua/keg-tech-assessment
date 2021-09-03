@@ -12,13 +12,13 @@
         <div class="row row-cols-1">
           <div class="col">
 
-            <div class="card shadow-sm">
+            <div class="card shadow">
               <div class="card-body">
-                <h5 class="card-title">
+                <h1 class="card-title text-center">
                   Goat Facts
-                </h5>
+                </h1>
 
-                <form>
+                <form class="text-center">
                   <p>
                     <label for="goat-facts-filter-text">
                       Filter by word:
@@ -36,6 +36,7 @@
                       type="number"
                       id="goat-facts-filter-index"
                       min="1"
+                      class="filter-index"
                     >
                   </p>
                 </form>
@@ -44,12 +45,14 @@
                   class="list-group"
                   id="goat-facts-list"
                 >
-                  <!-- Add Goat Facts Here -->
+                  <!-- Goat Facts will be added here -->
                 </ul>
+                <div id="goat-alert" hidden class="alert alert-dark" role="alert">
+                  Sorry, I've got nothin.
+                </div>
               </div>
 
-              <div class="card-footer">
-                <!-- When this button is clicked, it should get more goat facts -->
+              <div class="card-footer text-center">
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -65,6 +68,5 @@
       </div>
     </main>
   </body>
-
 </html>
 

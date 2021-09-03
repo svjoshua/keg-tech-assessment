@@ -1,9 +1,11 @@
 const { apiErr, apiResponse } = require('./handler')
-const { goatFacts } = require('../libs/goatsLib')
+const { initGoats, goatFacts, GoatService } = require('../libs/goatsLib')
+const goatService = new GoatService()
 
 const getGoats = (app, config) => async (req, res) => {
   try {
-    const goats = await goatFacts()
+    // let goats = await goatFacts(app)
+    let goats = await goatService.goatFacts()
     return apiResponse(req, res, goats, 200)
   }
   catch (err) {
@@ -11,7 +13,10 @@ const getGoats = (app, config) => async (req, res) => {
   }
 }
 
-module.exports = (app, config) => {
+module.exports = async (app, config) => {
+  // initializes the goats db collection
+  // await initGoats(app.get('db'))
+  await goatService.initDb(app.get('db'))
   // Gets a list of goat facts
   app.get('/goats', getGoats(app, config))
 

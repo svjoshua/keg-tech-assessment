@@ -1,0 +1,14 @@
+services:
+  web:
+    build: ./container
+    ports:
+      - "3000:3000"
+      - "5005:5005"
+    links:
+      - mongo
+    volumes:
+      - .:/app
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
