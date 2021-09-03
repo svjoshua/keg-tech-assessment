@@ -57,7 +57,7 @@ class GoatService {
 
   /**
    * Gets a single fact about goats from the GoatService instance
-   * @returns {string} a fact about goats
+   * @returns {string}
    */
   getRandomFact() {
     // refill the pool if empty

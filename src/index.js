@@ -7,22 +7,26 @@ import { filterGoatFacts } from './filterGoatFacts'
 const wordInput = document.querySelector('#goat-facts-filter-text')
 const wordIndexInput = document.querySelector('#goat-facts-filter-index')
 
-// limit input to a single word (no spaces)
 wordInput.addEventListener('keypress', e => {
+  // get goat facts on enter key
   if (e.key === 'Enter') onGetGoatFacts()
+
+  // limit input to a single word (no spaces)
   if (e.key === ' ') {
     e.preventDefault()
   }
 })
 
-// sanitize input on change event (handles copy/paste)
 wordInput.addEventListener('change', function (e) {
+  // sanitize input on change event (handles copy/paste)
   this.value = this.value.replaceAll(/\s/g, '')
 })
 
-// limit input index to digits
 wordIndexInput.addEventListener('keypress', e => {
+  // get goat facts on enter key
   if (e.key === 'Enter') onGetGoatFacts()
+
+  // limit input index to digits
   if (!/\d/.test(e.key)) {
     e.preventDefault()
   }
@@ -45,8 +49,10 @@ const onGetGoatFacts = async () => {
   const filterIndexString = wordIndexInput.value
   const filterIndex = parseInt(filterIndexString)
 
+  // retrieve 20 (unfiltered) facts
   let facts = await getGoatFacts()
 
+  // if both a word and an integer are entered, filter the results
   if (
     filterWord.length &&
     filterIndexString.length &&
@@ -55,12 +61,15 @@ const onGetGoatFacts = async () => {
     facts = filterGoatFacts(facts, filterWord, filterIndex)
   }
 
+  // add the facts to the DOM
   addGoatFacts(facts)
 
   if (facts.length) {
+    // make sure the empty alert message is hidden
     alert.setAttribute('hidden', '')
   }
   else {
+    // show the empty alert message
     alert.removeAttribute('hidden')
   }
 }
