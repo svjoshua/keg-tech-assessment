@@ -3,7 +3,7 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require('mongodb')
 const apiEndpoints = require('./endpoints')
 const { api: config } = require('../configs/server.config')
 const { noOpObj, noPropArr, eitherArr } = require('@keg-hub/jsutils')
@@ -54,10 +54,10 @@ const setupServer = (app, config) => {
 }
 
 const setupDb = async (app, config) => {
-  const client = new MongoClient(config.dbUrl);
-  await client.connect(); // initialize connetion to mongodb
-  const db = client.db('goats');
-  app.set('db', db); // store db as an app setting for access within libs
+  const client = new MongoClient(config.dbUrl)
+  await client.connect() // initialize connetion to mongodb
+  const db = client.db('goats')
+  app.set('db', db) // store db as an app setting for access within libs
 }
 
 /**

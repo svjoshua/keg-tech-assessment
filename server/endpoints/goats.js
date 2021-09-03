@@ -1,5 +1,5 @@
 const { apiErr, apiResponse } = require('./handler')
-const { initGoats, goatFacts, GoatService } = require('../libs/goatsLib')
+const { GoatService } = require('../libs/goatsLib')
 const goatService = new GoatService()
 
 const getGoats = (app, config) => async (req, res) => {

@@ -5,12 +5,9 @@ const goatFactsList = document.querySelector('#goat-facts-list')
  */
 export const addGoatFacts = (facts = []) => {
   // Clear out any past goat facts under the ul#goat-facts-list element
-  goatFactsList.innerHTML = '';
+  goatFactsList.innerHTML = ''
 
   for (const fact of facts) {
-    goatFactsList.insertAdjacentHTML(
-      'beforeend',
-      `<li>${fact}</li>`
-    )
+    goatFactsList.insertAdjacentHTML('beforeend', `<li>${fact}</li>`)
   }
 }

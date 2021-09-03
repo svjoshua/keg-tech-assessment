@@ -41,8 +41,8 @@ const alert = document.querySelector('#goat-alert')
  * onGetGoatFacts - Action to update the goat facts displayed on the Dom
  */
 const onGetGoatFacts = async () => {
-  const filterWord = wordInput.value;
-  const filterIndexString = wordIndexInput.value;
+  const filterWord = wordInput.value
+  const filterIndexString = wordIndexInput.value
   const filterIndex = parseInt(filterIndexString)
 
   let facts = await getGoatFacts()
@@ -59,7 +59,8 @@ const onGetGoatFacts = async () => {
 
   if (facts.length) {
     alert.setAttribute('hidden', '')
-  } else {
+  }
+  else {
     alert.removeAttribute('hidden')
   }
 }
