@@ -9,8 +9,6 @@ export const getGoatFacts = async () => {
   return axios
     .get(`${apiConfig.baseUrl}/goats`)
     .then(response => {
-      // Print array of goat facts in console
-      console.log(response.data.data)
       return response.data.data
     })
     .catch(error => {
