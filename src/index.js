@@ -8,8 +8,6 @@ import { filterGoatFacts } from './filterGoatFacts'
  * onGetGoatFacts - Action to update the goat facts displayed on the Dom
  */
 const onGetGoatFacts = async () => {
-  console.error(`Step 3. Should be called by the Get Goat Facts button!`)
-
   const facts = await getGoatFacts()
 
   const filteredFacts = filterGoatFacts(facts)
@@ -18,6 +16,11 @@ const onGetGoatFacts = async () => {
 }
 
 ;(async () => {
-  console.error(`Step 2. Open the browser inspector!`)
-  await onGetGoatFacts()
+  // Select get-goat-facts button Element and attach
+  // a click event to it to call onGetGoatFacts
+  document
+    .querySelector('#get-goat-facts')
+    .addEventListener('click', async () => {
+      await onGetGoatFacts()
+    })
 })()
