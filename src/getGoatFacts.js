@@ -1,6 +1,19 @@
+const axios = require('axios')
+const { api: apiConfig } = require('../configs/server.config')
+
 /**
  * getGoatFacts - Gets a list of goat facts from the backend API
  */
 export const getGoatFacts = async () => {
-  console.error(`Step 4. Goat Facts api call!`)
+  // Add call to API endpoint goats
+  return axios
+    .get(`${apiConfig.baseUrl}/goats`)
+    .then(response => {
+      // Print array of goat facts in console
+      console.log(response.data.data)
+      return response.data.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
 }

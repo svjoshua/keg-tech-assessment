@@ -3,7 +3,8 @@ const { doIt } = require('@keg-hub/jsutils')
 const factList = require('./goatFacts.json')
 
 const getRandomFact = () => {
-  throw new Error(`Random goat fact code not implemented!`)
+  // return a randomly selected item of the goat facts array
+  return factList[Math.floor(Math.random() * factList.length)]
 }
 
 const goatFacts = async () => {
