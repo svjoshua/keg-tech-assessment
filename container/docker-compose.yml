@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    image: tech:assessment
+    environment:
+      - MONGODB_URI=mongodb://mongoadmin:secret@db:27017
+    ports:
+      - "3000:3000"
+      - "5005:5005"
+    depends_on:
+      - db
+    networks:
+      - goat-app-net
+
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=goat_db
+    volumes:
+      - ./init_goat_db.js:/docker-entrypoint-initdb.d/init_goat_db.js
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    networks:
+      - goat-app-net
+
+networks:
+  goat-app-net:

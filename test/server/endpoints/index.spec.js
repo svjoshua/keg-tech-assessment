@@ -2,6 +2,9 @@ const axios = require('axios')
 const { api: apiConfig } = require('../../../configs/server.config')
 const { initApi } = require('../../../server/server')
 
+jest.mock('../../../server/db/mongodb.js')
+jest.mock('../../../server/libs/goatsLib.js')
+
 describe("testing-goat-facts-api", () => {
 
     let appServer

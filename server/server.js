@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const apiEndpoints = require('./endpoints')
 const { api: config } = require('../configs/server.config')
 const { noOpObj, noPropArr, eitherArr } = require('@keg-hub/jsutils')
+const { connectToServer } = require('./db/mongodb')
 
 const rootPath = path.join(path.normalize(__dirname), '..')
 
@@ -53,6 +54,25 @@ const setupServer = (app, config) => {
 }
 
 /**
+ * Initialize the connection to MongoDB
+ * 
+ * TODO: Implement an endless retry mechanism to connect
+ *       to the database instead of throwing an exception
+ * 
+ * @param {Object} app - Express app object
+ *
+ * @returns {void}
+ * @throws an exception when an error occurs
+*/
+const setupMongoDb = app => {
+  connectToServer(err => {
+    if (err) {
+      throw err
+    }
+  })
+}
+
+/**
  * Starts a express API server
  * Loads the server config for configuring the server properties
  *
@@ -64,6 +84,8 @@ const initApi = async () => {
   setupServer(app, config)
   setupCors(app, config)
   apiEndpoints(app, config)
+
+  setupMongoDb(app)
 
   const server = app.listen(config.port, config.host, () =>
     console.log(new Date() + ` - Listening on ${config.host}:${config.port}`)
