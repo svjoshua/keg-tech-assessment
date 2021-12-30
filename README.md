@@ -114,6 +114,8 @@
 
 10. **Deploy to the Cloud** - *extra credit*
    * How this is done is not important. It just needs to be accessible via the internet in some way
+  
+  > Accessible from the Cloud at https://goat-facts.uc.r.appspot.com/
 
 ## Submit
    * Submit a pull request to this repo

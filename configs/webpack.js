@@ -22,7 +22,8 @@ module.exports = {
     compress: true,
     host: config.web.host,
     port: config.web.port,
-    overlay: true
+    overlay: true,
+    disableHostCheck: true
   },
   module: {
     rules: [
