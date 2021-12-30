@@ -8,14 +8,15 @@
   "scripts": {
     "doc:build": "docker build --file ./container/Dockerfile --tag tech:assessment --force-rm .",
     "doc:run": "docker run -it --rm --env-file ./container/.env -p 3000:3000 -p 5005:5005 tech:assessment",
-    "doc:test": "node scripts/docTest.js",
+    "doc:test": "node scripts/docTest.js && yarn test",
     "api": "nodemon --watch ./server --watch ./configs --exec 'node ./server/index.js'",
     "dev": "yarn start",
     "format": "yarn pretty && yarn eslint",
     "eslint": "eslint --config ./configs/eslintrc.config.js . --resolve-plugins-relative-to ./ --fix --quiet",
     "pretty": "./node_modules/.bin/prettier --config ./configs/prettier.config.js --ignore-path .eslintignore --write '**/*.{js,jsx}'",
     "start": "run-p web api",
-    "web": "webpack serve --config configs/webpack.js --progress --content-base src/"
+    "web": "webpack serve --config configs/webpack.js --progress --content-base src/",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
@@ -27,6 +28,7 @@
     "@keg-hub/args-parse": "6.2.1",
     "@keg-hub/jsutils": "8.3.0",
     "@keg-hub/spawn-cmd": "0.1.1",
+    "@types/jest": "27.0.3",
     "app-root-path": "3.0.0",
     "axios": "0.21.1",
     "babel-eslint": "^10.1.0",
@@ -45,7 +47,7 @@
     "file-loader": "6.2.0",
     "html-loader": "1.3.2",
     "html-webpack-plugin": "5.0.0-alpha.6",
-    "jest": "26.6.3",
+    "jest": "^27.4.5",
     "mini-css-extract-plugin": "1.3.3",
     "nodemon": "2.0.4",
     "npm-run-all": "4.1.5",
