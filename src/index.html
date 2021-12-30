@@ -8,7 +8,7 @@
   </head>
   <body>
     <main>
-      <div class="container mt-5">
+      <div class="container mt-5 mb-5">
         <div class="row row-cols-1">
           <div class="col">
 
@@ -18,9 +18,45 @@
                   Goat Facts
                 </h5>
                 
-                <form>
+                <form id="goat-facts-filters-form" novalidate>
                   <!-- Add Input filters here -->
+                  <div class="row g-2">
+                    <div class="col-md position-relative">
+                      <div class="form-floating">
+                        <input type="text"
+                               class="form-control goat-facts-input-filter"
+                               id="single-word-filter"
+                               placeholder="Enter a single word (no spaces)"
+                               pattern="^\S+$"
+                               required/>
+
+                        <label for="single-word-filter">Word filter</label>
+                        <div class="invalid-tooltip">Enter a single word (no spaces)</div>
+                      </div>
+                      <div class="form-text">Enter a single word (no spaces)</div>
+                    </div>
+
+                    <div class="col-2 position-relative">
+                      <div class="form-floating">
+                        <input type="number"
+                               class="form-control goat-facts-input-filter"
+                               id="word-index-filter"
+                               placeholder="Enter a single word (no spaces)"
+                               min="1"
+                               required/>
+
+                        <label for="word-index-filter">Word position</label>
+                        <div class="invalid-tooltip">Enter a positive index number</div>
+                      </div>
+                      <div class="form-text">Enter a positive index number</div>
+                    </div>
+                  </div>
+
+                  <!-- Hidden submit button to trigger form validation -->
+                  <button id="goat-facts-filters-submit" type="submit" class="d-none"></button>
                 </form>
+
+                <hr />
                 
                 <ul
                   class="list-group"
@@ -28,6 +64,8 @@
                 >
                   <!-- Add Goat Facts Here -->
                 </ul>
+
+                <div id="no-goat-fact-found" class="d-none"><i>No goat fact found with the provided filters</i></div>
               </div>
 
               <div class="card-footer">

@@ -110,9 +110,23 @@
    * You may use any database you like.
    * Import the current contents of the flat file into the database so that the functionality of the API remains unchanged from the front end.
 
+  > From this step, you can run the full stack using [`docker-compose`](https://docs.docker.com/compose/install/) and spin it up with `yarn doc:run` and the command `yarn doc:test` in a separate terminal
+
 10. **Deploy to the Cloud** - *extra credit*
    * How this is done is not important. It just needs to be accessible via the internet in some way
+  
+  > Accessible from the Cloud at https://goat-facts.uc.r.appspot.com/
 
 ## Submit
    * Submit a pull request to this repo
    * Send an us an email, letting us know it has been submitted
+
+## Alternate filtering logic
+Depending on the client requirements, another possible way to filter the goat facts is to directly manipulate the DOM to hide/show after all the facts have been added to the DOM via `addGoatFacts()`.
+
+This way, the list of facts displayed will be filtered inline without having to click on `Get Goat Facts` button. It would result in a different user experience.
+
+For this solution, we need to:
+   * Move `filterGoatFacts()` call after `addGoatFacts()`
+   * Remove the array parameter from `filterGoatFacts()`
+   * Re-design this method to filter directly from the DOM `<li>` elements instead of filtering the list of facts prior to display them

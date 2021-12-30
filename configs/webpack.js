@@ -22,7 +22,8 @@ module.exports = {
     compress: true,
     host: config.web.host,
     port: config.web.port,
-    overlay: true
+    overlay: true,
+    disableHostCheck: true
   },
   module: {
     rules: [
@@ -75,10 +76,11 @@ module.exports = {
       inject: 'body',
     }),
     new webpack.DefinePlugin({
-      APP_SERVER_HOST: JSON.stringify(config.host),
-      APP_SERVER_PORT: JSON.stringify(config.port),
-      "process.env.APP_SERVER_HOST": JSON.stringify(config.host),
-      "process.env.APP_SERVER_PORT": JSON.stringify(config.port),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development'),
+      "process.env.API_PORT": JSON.stringify(process.env.API_PORT || 5005),
+      "process.env.UI_PORT": JSON.stringify(process.env.UI_PORT || 3000),
+      "process.env.API_BASE_URL": JSON.stringify(process.env.API_BASE_URL || 'http://localhost:5005'),
+      "process.env.API_ORIGIN": JSON.stringify(process.env.API_ORIGIN || 'http://localhost:3000'),
     })
   ]
 };

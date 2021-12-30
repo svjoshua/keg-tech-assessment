@@ -10,12 +10,12 @@ const axios = require('axios')
 const apiURl = `http://${config.host}:${config.port}`
 const buildRequest = request => {
   request = (isStr(request) && {url: request}) || request
-  request.url = request.url.includes('http:') ? request.url : `${apiURl}/${request.url}`
+  request.url = request.url.includes('http:') ? request.url : `${config.baseUrl}/${request.url}`
 
   return deepMerge(
     {
       method: 'GET',
-      url: apiURl,
+      url: config.baseUrl,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

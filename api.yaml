@@ -1,0 +1,16 @@
+runtime: nodejs
+service: api
+env: flex
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+env_variables:
+  MONGODB_URI: "mongodb+srv://mongoadmin:91iE7N6p36PHfeEk@cluster0.zn6wg.mongodb.net/goat_db?retryWrites=true&w=majority"
+  UI_PORT: 8080
+  API_PORT: 8080
+  API_BASE_URL: "https://api-dot-goat-facts.uc.r.appspot.com"
+  API_ORIGIN: "*"
+  APP_NAME: api
