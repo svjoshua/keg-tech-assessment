@@ -1,2 +1,21 @@
 /* Site CSS */
 
+main .btn-clear {
+	background-color: #c2c2c4;
+	border-color: #000000;
+	color: #000000;
+}
+
+.position-number {
+	width: 5em;
+
+}
+
+label  {
+	margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.btn-clear {
+    margin-left: 1em;
+}
