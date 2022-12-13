@@ -19,19 +19,39 @@
                 </h5>
                 
                 <form>
-                  <!-- Add Input filters here -->
+                  <label>Search Text: 
+                    <input 
+                      id="search-text" 
+                      class="search-text"
+                      type="text" 
+                      onkeypress="return event.charCode != 32">
+                  </label>
+                  <label>Position Number: 
+                    <input id="position" 
+                      class="position-number" 
+                      type="number" 
+                      onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                      min="1" >
+                  </label>
+                  <button
+                    type="button"
+                    class="btn btn-clear"
+                    id="clear-form"
+                  >
+                    Clear Form
+                  </button>
                 </form>
                 
                 <ul
                   class="list-group"
                   id="goat-facts-list"
                 >
-                  <!-- Add Goat Facts Here -->
+                  <!-- goat facts will be generated here from addGoatFacts.js -->
                 </ul>
               </div>
 
               <div class="card-footer">
-                <!-- When this button is clicked, it should get more goat facts -->
+                <!-- When this button is clicked, it should get more goat facts using getGoatFacts.js -->
                 <button
                   type="button"
                   class="btn btn-primary"
